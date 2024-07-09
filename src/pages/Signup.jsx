@@ -1,139 +1,84 @@
-// src/Signup.jsx
-import React, { useState } from "react";
+import React from "react";
+import imagesPath from "../data/imagesPath.json";
 
 const Signup = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    email: "",
-    password: "",
-    rememberMe: false,
-  });
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === "checkbox" ? checked : value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-  };
-
   return (
     <div className="flex min-h-screen">
-      {/* Sidebar */}
       <div
-        className="relative w-1/2 flex-shrink-0 h-full"
-        style={{ width: "60.55431rem", height: "47.14175rem" }}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="100%"
-          height="100%"
-          viewBox="0 0 674 851"
-          fill="none"
-          className="absolute inset-0"
-        >
-          <path
-            d="M-80.3472 -58.9272L-80.3472 909.941L591.071 909.941C700.839 788.684 756.567 245.173 395.699 -58.9273L-80.3472 -58.9272Z"
-            fill="url(#paint0_linear_84_14225)"
-          />
-          <defs>
-            <linearGradient
-              id="paint0_linear_84_14225"
-              x1="-80.3472"
-              y1="425.507"
-              x2="673.921"
-              y2="425.507"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#0771EF" />
-              <stop offset="1" stopColor="#0771EF" stopOpacity="0.74" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-
-      {/* Form Container */}
-      <div className="flex items-center justify-center w-1/2 bg-gray-100">
-        <form
-          className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md"
-          onSubmit={handleSubmit}
-        >
-          <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">
-            Sign Up To Continue
-          </h2>
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-2">Name</label>
+        className="hidden md:block"
+        style={{
+          backgroundImage: `url(${imagesPath.Signup.sidebarBackground})`,
+          width: "38.55431rem",
+          height: "40.14175rem",
+          backgroundSize: "cover",
+        }}
+      ></div>
+      <div className="flex flex-col justify-center w-full md:w-1/2 px-2 md:px-8 lg:px-16">
+        <h2 className="text-3xl font-semibold mb-8">Sign Up To Continue</h2>
+        <form className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium mb-1" htmlFor="name">
+              Name
+            </label>
             <input
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full px-3 py-2 border rounded-lg"
+              id="name"
+              placeholder="Name"
             />
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-2">Company</label>
+          <div>
+            <label className="block text-sm font-medium mb-1" htmlFor="company">
+              Company
+            </label>
             <input
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               type="text"
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
-              required
-              className="w-full px-3 py-2 border rounded-lg"
+              id="company"
+              placeholder="Company"
             />
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-2">Email</label>
+          <div>
+            <label className="block text-sm font-medium mb-1" htmlFor="email">
+              Email
+            </label>
             <input
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-3 py-2 border rounded-lg"
+              id="email"
+              placeholder="Email"
             />
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-2">Password</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              minLength="8"
-              className="w-full px-3 py-2 border rounded-lg"
-            />
-          </div>
-          <div className="mb-4 flex items-center">
-            <input
-              type="checkbox"
-              name="rememberMe"
-              checked={formData.rememberMe}
-              onChange={handleChange}
-              className="mr-2"
-            />
-            <label className="text-gray-700">Remember me</label>
-          </div>
-          <div className="mb-4 text-right">
-            <a
-              href="/forgot-password"
-              className="text-blue-600 hover:underline"
+          <div>
+            <label
+              className="block text-sm font-medium mb-1"
+              htmlFor="password"
             >
+              Password
+            </label>
+            <input
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              type="password"
+              id="password"
+              placeholder="Password (at least 8 characters)"
+            />
+          </div>
+          <div className="flex items-center">
+            <input
+              className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              type="checkbox"
+              id="remember-me"
+            />
+            <label className="ml-2 block text-sm" htmlFor="remember-me">
+              Remember me
+            </label>
+          </div>
+          <div className="flex items-center justify-between">
+            <a href="#" className="text-sm text-blue-600 hover:underline">
               Forgot Password?
             </a>
           </div>
-          <button
-            type="submit"
-            className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-          >
+          <button className="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
             Sign In
           </button>
         </form>

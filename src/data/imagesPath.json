@@ -3,6 +3,12 @@
     "sidebarBackground": "./sidebar_background.png",
     "logo": "./logo.svg",
     "robotIcon": "./robot_interacting_with_computer.svg",
-    "checkmark": "./radial_checkmark.svg"
+    "checkmark": "./radial_checkmark.svg",
+    "eyeIcon": "./eye_icon.svg"
+  },
+  "Footer": {
+    "telephoneIcon": "./telephone_icon.svg",
+    "emailIcon": "./email_icon.svg",
+    "locationIcon": "./location_icon.svg"
   }
 }

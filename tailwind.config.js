@@ -4,5 +4,16 @@ module.exports = {
   theme: {
     extend: {},
   },
+  fontFamily: {
+    interBlack: ["Inter-Black", "sans-serif"],
+    interBold: ["Inter-Bold", "sans-serif"],
+    interExtraBold: ["Inter-ExtraBold", "sans-serif"],
+    interExtraLight: ["Inter-ExtraLight", "sans-serif"],
+    interLight: ["Inter-Light", "sans-serif"],
+    interMedium: ["Inter-Medium", "sans-serif"],
+    interRegular: ["Inter-Regular", "sans-serif"],
+    interSemiBold: ["Inter-SemiBold", "sans-serif"],
+    interThin: ["Inter-Thin", "sans-serif"],
+  },
   plugins: [],
 };

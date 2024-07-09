@@ -7,8 +7,13 @@
     "eyeIcon": "./eye_icon.svg"
   },
   "Footer": {
+    "locationIcon": "./location_icon.svg",
     "telephoneIcon": "./telephone_icon.svg",
     "emailIcon": "./email_icon.svg",
-    "locationIcon": "./location_icon.svg"
+    "facebookIcon": "./facebook.svg",
+
+    "linkedInIcon": "./linkedIn.svg",
+    "twitterIcon": "./twitter.svg",
+    "whatsappIcon": "./whatsapp.svg"
   }
 }

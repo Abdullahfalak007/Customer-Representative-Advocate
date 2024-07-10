@@ -55,6 +55,16 @@
   transform: translate(-50%, -50%);
 }
 
+/* For the input field of the navbar */
+.placeholder-custom::placeholder {
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2.25rem; /* This should match the input height */
+}
+
 body,
 html,
 #root {

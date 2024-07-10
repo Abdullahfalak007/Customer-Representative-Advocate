@@ -133,7 +133,7 @@ const Modal = ({
         ref={modalRef}
         className="relative bg-white flex-shrink-0 w-[34.625rem] h-[36.375rem] rounded-[1.81856rem]"
       >
-        <div className="bg-customBlue rounded-t-lg flex items-center justify-center relative h-[5.20994rem] rounded-[1.81856rem_1.81856rem_0_0]">
+        <div className="bg-customBlue rounded-t-lg flex items-center justify-center relative h-[5.20994rem] rounded-t-[1.81856rem]">
           <img
             src={imagesPath.Modal.icon}
             alt="Icon"

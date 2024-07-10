@@ -41,9 +41,9 @@ const VirtualAssistants = ({
       );
       setData(updatedData);
     } else {
-      // Add new entry
+      // Add new entry at the top
       const newEntry = { ...formData, id: data.length + 1 };
-      setData([...data, newEntry]);
+      setData([newEntry, ...data]);
     }
     closeModal();
   };
@@ -53,14 +53,14 @@ const VirtualAssistants = ({
       <div className="overflow-auto h-full">
         <table className="min-w-full bg-white border-collapse">
           <thead className="bg-customBlue text-white sticky top-0 z-10">
-            <tr>
-              <th className="py-2 px-4 text-left w-12">
-                <div className="flex items-center">
+            <tr className="space-x-8">
+              <th className="py-4 px-4 text-center w-12">
+                <div className="flex items-center justify-center text-white font-inter text-[0.9375rem] font-medium">
                   <input type="checkbox" className="form-checkbox-header" />
                 </div>
               </th>
-              <th className="py-2 px-4 text-left">
-                <div className="flex items-center">
+              <th className="py-2 px-4 text-center">
+                <div className="flex items-center justify-center text-white font-inter text-[0.9375rem] font-medium ml-[-2rem]">
                   ID
                   <div className="ml-2 flex flex-col">
                     <button
@@ -86,8 +86,8 @@ const VirtualAssistants = ({
                   </div>
                 </div>
               </th>
-              <th className="py-2 px-4 text-left">
-                <div className="flex items-center">
+              <th className="py-2 px-4 text-center">
+                <div className="flex items-center justify-center text-white font-inter text-[0.9375rem] font-medium">
                   Virtual Assistant
                   <div className="ml-2 flex flex-col">
                     <button
@@ -113,8 +113,8 @@ const VirtualAssistants = ({
                   </div>
                 </div>
               </th>
-              <th className="py-2 px-4 text-left">
-                <div className="flex items-center">
+              <th className="py-2 px-4 text-center">
+                <div className="flex items-center justify-center text-white font-inter text-[0.9375rem] font-medium">
                   Email
                   <div className="ml-2 flex flex-col">
                     <button
@@ -140,8 +140,8 @@ const VirtualAssistants = ({
                   </div>
                 </div>
               </th>
-              <th className="py-2 px-4 text-left">
-                <div className="flex items-center">
+              <th className="py-2 px-4 text-center">
+                <div className="flex items-center justify-center text-white font-inter text-[0.9375rem] font-medium">
                   Number
                   <div className="ml-2 flex flex-col">
                     <button
@@ -167,33 +167,25 @@ const VirtualAssistants = ({
                   </div>
                 </div>
               </th>
-              <th className="py-2 px-4 text-left">Action</th>
+              <th className="py-2 px-4 text-center text-white font-inter text-[0.9375rem] font-medium">
+                Action
+              </th>
             </tr>
           </thead>
           <tbody>
             {data.map((assistant, index) => (
               <tr
                 key={index}
-                className="border-t border-gray-300 hover:bg-gray-100"
+                className="border-t border-gray-300 hover:bg-gray-100 text-black font-inter text-[0.875rem] font-normal text-center"
               >
-                <td className="py-2 px-4 w-12">
+                <td className="py-4 px-4 w-12">
                   <input type="checkbox" className="form-checkbox" />
                 </td>
-                <td className="py-2 px-4">{assistant.id}</td>
-                <td className="py-2 px-4">{assistant.name}</td>
-                <td className="py-2 px-4">{assistant.email}</td>
-                <td className="py-2 px-4">{assistant.number}</td>
-                <td className="py-2 px-4 flex space-x-2">
-                  <button
-                    className="text-blue-600 hover:text-blue-800"
-                    onClick={() => openModal(assistant)}
-                  >
-                    <img
-                      src={imagesPath.VirtualAssistantTable.editIcon}
-                      alt="Edit"
-                      className="w-5 h-5"
-                    />
-                  </button>
+                <td className="py-4">{assistant.id}</td>
+                <td className="py-4 px-4">{assistant.name}</td>
+                <td className="py-4 px-4">{assistant.email}</td>
+                <td className="py-4 px-4">{assistant.number}</td>
+                <td className="py-4 px-4 flex justify-center space-x-2">
                   <button
                     className="text-red-600 hover:text-red-800"
                     onClick={() => deleteEntry(index)}
@@ -201,7 +193,17 @@ const VirtualAssistants = ({
                     <img
                       src={imagesPath.VirtualAssistantTable.recycleBinIcon}
                       alt="Delete"
-                      className="w-5 h-5"
+                      className="w-[0.96356rem] h-[0.96356rem]"
+                    />
+                  </button>
+                  <button
+                    className="text-blue-600 hover:text-blue-800"
+                    onClick={() => openModal(assistant)}
+                  >
+                    <img
+                      src={imagesPath.VirtualAssistantTable.editIcon}
+                      alt="Edit"
+                      className="w-[0.96356rem] h-[0.96356rem]"
                     />
                   </button>
                 </td>

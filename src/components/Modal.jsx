@@ -1,9 +1,110 @@
+// // src/components/Modal.jsx
+// import React, { useRef, useEffect } from "react";
+// import imagesPath from "../data/imagesPath.json";
+// import FormField from "./FormField";
+// import "../index.css";
+
+// const Modal = ({ isOpen, onClose, onSave, formData, setFormData }) => {
+//   const modalRef = useRef(null);
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({ ...formData, [name]: value });
+//   };
+
+//   const handleClickOutside = (event) => {
+//     if (modalRef.current && !modalRef.current.contains(event.target)) {
+//       onClose();
+//     }
+//   };
+
+//   useEffect(() => {
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => {
+//       document.removeEventListener("mousedown", handleClickOutside);
+//     };
+//   }, []);
+
+//   if (!isOpen) return null;
+
+//   return (
+//     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+//       <div
+//         ref={modalRef}
+//         className="relative bg-white flex-shrink-0 w-[34.625rem] h-[36.375rem] rounded-[1.81856rem]"
+//       >
+//         <div className="bg-customBlue rounded-t-lg flex items-center justify-center relative h-[5.20994rem] rounded-[1.81856rem_1.81856rem_0_0]">
+//           <img
+//             src={imagesPath.Modal.icon}
+//             alt="Icon"
+//             className="absolute w-[11rem] h-[10.07588rem] top-10"
+//           />
+//         </div>
+//         <div className="text-center mt-32">
+//           <h2 className="text-[1.22875rem] font-medium text-black font-poppins">
+//             Edit Virtual Assistant
+//           </h2>
+//         </div>
+//         <form className="px-8 pt-12">
+//           <FormField
+//             label="Name"
+//             type="text"
+//             name="name"
+//             value={formData.name}
+//             onChange={handleChange}
+//           />
+//           <FormField
+//             label="Number"
+//             type="text"
+//             name="number"
+//             value={formData.number}
+//             onChange={handleChange}
+//           />
+//           <FormField
+//             label="Email"
+//             type="email"
+//             name="email"
+//             value={formData.email}
+//             onChange={handleChange}
+//           />
+//           <FormField
+//             label="Password"
+//             type="password"
+//             name="password"
+//             value={formData.password}
+//             onChange={handleChange}
+//           />
+//           <div className="flex justify-center">
+//             <button
+//               type="button"
+//               onClick={onSave}
+//               className="bg-blue-500 text-white px-6 py-2 rounded-full mr-2"
+//             >
+//               Save
+//             </button>
+//           </div>
+//         </form>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Modal;
+
 // src/components/Modal.jsx
 import React, { useRef, useEffect } from "react";
 import imagesPath from "../data/imagesPath.json";
+import FormField from "./FormField";
 import "../index.css";
 
-const Modal = ({ isOpen, onClose, onSave, formData, setFormData }) => {
+const Modal = ({
+  isOpen,
+  onClose,
+  onSave,
+  formData,
+  setFormData,
+  isEditMode,
+}) => {
   const modalRef = useRef(null);
 
   const handleChange = (e) => {
@@ -30,145 +131,58 @@ const Modal = ({ isOpen, onClose, onSave, formData, setFormData }) => {
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
       <div
         ref={modalRef}
-        className="relative bg-white flex-shrink-0"
-        style={{
-          width: "34.625rem",
-          height: "36.375rem",
-          borderRadius: "1.81856rem",
-          background: "#FFF",
-        }}
+        className="relative bg-white flex-shrink-0 w-[34.625rem] h-[36.375rem] rounded-[1.81856rem]"
       >
-        <div
-          className="bg-customBlue rounded-t-lg flex items-center justify-center relative"
-          style={{
-            height: "5.20994rem",
-            borderRadius: "1.81856rem 1.81856rem 0 0",
-          }}
-        >
+        <div className="bg-customBlue rounded-t-lg flex items-center justify-center relative h-[5.20994rem] rounded-[1.81856rem_1.81856rem_0_0]">
           <img
             src={imagesPath.Modal.icon}
             alt="Icon"
-            className="absolute"
-            style={{
-              width: "11rem",
-              height: "10.07588rem",
-              top: "2.5rem",
-            }}
+            className="absolute w-[11rem] h-[10.07588rem] top-10"
           />
         </div>
         <div className="text-center mt-32">
-          <h2 className="text-xl font-poppinsRegular font-semibold">
-            Edit Virtual Assistant
+          <h2 className="text-[1.22875rem] font-medium text-black font-poppins">
+            {isEditMode
+              ? "Edit Virtual Assistant"
+              : "Add New Virtual Assistant"}
           </h2>
         </div>
         <form className="px-8 pt-12">
-          <div className="mb-4 flex items-center">
-            <label
-              className="text-left mr-8"
-              htmlFor="name"
-              style={{
-                color: "#8C8C8C",
-                fontFamily: "Inter",
-                fontSize: "0.8125rem",
-                fontStyle: "normal",
-                fontWeight: 500,
-                lineHeight: "normal",
-                width: "6rem",
-              }}
-            >
-              Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="flex-1 p-2 border border-gray-300 rounded"
-            />
-          </div>
-          <div className="mb-4 flex items-center">
-            <label
-              className="text-left mr-8"
-              htmlFor="number"
-              style={{
-                color: "#8C8C8C",
-                fontFamily: "Inter",
-                fontSize: "0.8125rem",
-                fontStyle: "normal",
-                fontWeight: 500,
-                lineHeight: "normal",
-                width: "6rem",
-              }}
-            >
-              Number
-            </label>
-            <input
-              type="text"
-              name="number"
-              id="number"
-              value={formData.number}
-              onChange={handleChange}
-              className="flex-1 p-2 border border-gray-300 rounded"
-            />
-          </div>
-          <div className="mb-4 flex items-center">
-            <label
-              className="text-left mr-8"
-              htmlFor="email"
-              style={{
-                color: "#8C8C8C",
-                fontFamily: "Inter",
-                fontSize: "0.8125rem",
-                fontStyle: "normal",
-                fontWeight: 500,
-                lineHeight: "normal",
-                width: "6rem",
-              }}
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="flex-1 p-2 border border-gray-300 rounded"
-            />
-          </div>
-          <div className="mb-4 flex items-center">
-            <label
-              className="text-left mr-8"
-              htmlFor="password"
-              style={{
-                color: "#8C8C8C",
-                fontFamily: "Inter",
-                fontSize: "0.8125rem",
-                fontStyle: "normal",
-                fontWeight: 500,
-                lineHeight: "normal",
-                width: "6rem",
-              }}
-            >
-              Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="flex-1 p-2 border border-gray-300 rounded"
-            />
-          </div>
+          <FormField
+            label="Name"
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+          <FormField
+            label="Number"
+            type="text"
+            name="number"
+            value={formData.number}
+            onChange={handleChange}
+          />
+          <FormField
+            label="Email"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <FormField
+            label="Password"
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
           <div className="flex justify-center">
             <button
               type="button"
               onClick={onSave}
               className="bg-blue-500 text-white px-6 py-2 rounded-full mr-2"
             >
-              Save
+              {isEditMode ? "Save" : "Add"}
             </button>
           </div>
         </form>

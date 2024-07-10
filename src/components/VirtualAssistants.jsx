@@ -4,16 +4,17 @@ import imagesPath from "../data/imagesPath.json";
 import virtualAssistantsData from "../data/virtualAssistantsData.json";
 import Modal from "./Modal";
 
-const VirtualAssistants = () => {
+const VirtualAssistants = ({
+  openModal,
+  isModalOpen,
+  closeModal,
+  saveAssistant,
+  formData,
+  setFormData,
+  isEditMode,
+}) => {
   const [data, setData] = useState(virtualAssistantsData);
   const [sortOrder, setSortOrder] = useState({ key: "", order: "asc" });
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    number: "",
-    email: "",
-    password: "",
-  });
 
   const sortData = (key) => {
     const order =
@@ -32,17 +33,18 @@ const VirtualAssistants = () => {
     setData(updatedData);
   };
 
-  const openModal = (assistant) => {
-    setFormData(assistant || { name: "", number: "", email: "", password: "" });
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const saveAssistant = () => {
-    setData([...data, formData]);
+  const handleSave = () => {
+    if (isEditMode) {
+      // Update existing entry
+      const updatedData = data.map((entry) =>
+        entry.id === formData.id ? formData : entry
+      );
+      setData(updatedData);
+    } else {
+      // Add new entry
+      const newEntry = { ...formData, id: data.length + 1 };
+      setData([...data, newEntry]);
+    }
     closeModal();
   };
 
@@ -211,9 +213,10 @@ const VirtualAssistants = () => {
       <Modal
         isOpen={isModalOpen}
         onClose={closeModal}
-        onSave={saveAssistant}
+        onSave={handleSave}
         formData={formData}
         setFormData={setFormData}
+        isEditMode={isEditMode}
       />
     </div>
   );

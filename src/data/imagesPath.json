@@ -11,9 +11,30 @@
     "telephoneIcon": "./telephone_icon.svg",
     "emailIcon": "./email_icon.svg",
     "facebookIcon": "./facebook.svg",
-
     "linkedInIcon": "./linkedIn.svg",
     "twitterIcon": "./twitter.svg",
     "whatsappIcon": "./whatsapp.svg"
+  },
+  "Sidebar": {
+    "dashboard": {
+      "black": "./dashboard_icon_black.svg",
+      "white": "./dashboard_icon_white.svg"
+    },
+    "virtualAssistant": {
+      "black": "./virtual_assistant_icon_black.svg",
+      "white": "./virtual_assistant_icon_white.svg"
+    }
+  },
+  "Navbar": {
+    "searchIcon": "./search_icon.svg",
+    "addIcon": "./add_icon.svg",
+    "notificationIcon": "./notification_icon.svg",
+    "avatarIcon": "./avatar_icon.svg"
+  },
+  "VirtualAssistantTable": {
+    "arrowDownIcon": "./arrow_down_icon.svg",
+    "arrowUpIcon": "./arrow_up_icon.svg",
+    "editIcon": "./edit_icon.svg",
+    "recycleBinIcon": "./recycle_bin_icon.svg"
   }
 }

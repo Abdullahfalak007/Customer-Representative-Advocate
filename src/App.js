@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import OTP from "./pages/OTP";
 import ResetPassword from "./pages/ResetPassword";
 import ForgotPassword from "./pages/ForgotPassword";
+import VirtualAssistantsPage from "./pages/VirtualAssistantsPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       {/* <OTP /> */}
       {/* <ResetPassword /> */}
       {/* <ForgotPassword /> */}
+      <VirtualAssistantsPage />
     </div>
   );
 }

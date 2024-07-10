@@ -2,10 +2,18 @@
 import React, { useState } from "react";
 import imagesPath from "../data/imagesPath.json";
 import virtualAssistantsData from "../data/virtualAssistantsData.json";
+import Modal from "./Modal";
 
 const VirtualAssistants = () => {
   const [data, setData] = useState(virtualAssistantsData);
   const [sortOrder, setSortOrder] = useState({ key: "", order: "asc" });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    number: "",
+    email: "",
+    password: "",
+  });
 
   const sortData = (key) => {
     const order =
@@ -17,6 +25,25 @@ const VirtualAssistants = () => {
     });
     setData(sortedData);
     setSortOrder({ key, order });
+  };
+
+  const deleteEntry = (index) => {
+    const updatedData = data.filter((_, i) => i !== index);
+    setData(updatedData);
+  };
+
+  const openModal = (assistant) => {
+    setFormData(assistant || { name: "", number: "", email: "", password: "" });
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const saveAssistant = () => {
+    setData([...data, formData]);
+    closeModal();
   };
 
   return (
@@ -152,17 +179,23 @@ const VirtualAssistants = () => {
                 </td>
                 <td className="py-2 px-4">{assistant.id}</td>
                 <td className="py-2 px-4">{assistant.name}</td>
-                <td class="py-2 px-4">{assistant.email}</td>
+                <td className="py-2 px-4">{assistant.email}</td>
                 <td className="py-2 px-4">{assistant.number}</td>
                 <td className="py-2 px-4 flex space-x-2">
-                  <button className="text-blue-600 hover:text-blue-800">
+                  <button
+                    className="text-blue-600 hover:text-blue-800"
+                    onClick={() => openModal(assistant)}
+                  >
                     <img
                       src={imagesPath.VirtualAssistantTable.editIcon}
                       alt="Edit"
                       className="w-5 h-5"
                     />
                   </button>
-                  <button className="text-red-600 hover:text-red-800">
+                  <button
+                    className="text-red-600 hover:text-red-800"
+                    onClick={() => deleteEntry(index)}
+                  >
                     <img
                       src={imagesPath.VirtualAssistantTable.recycleBinIcon}
                       alt="Delete"
@@ -175,6 +208,13 @@ const VirtualAssistants = () => {
           </tbody>
         </table>
       </div>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onSave={saveAssistant}
+        formData={formData}
+        setFormData={setFormData}
+      />
     </div>
   );
 };

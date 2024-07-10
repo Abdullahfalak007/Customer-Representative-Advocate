@@ -36,5 +36,8 @@
     "arrowUpIcon": "./arrow_up_icon.svg",
     "editIcon": "./edit_icon.svg",
     "recycleBinIcon": "./recycle_bin_icon.svg"
+  },
+  "Modal": {
+    "icon": "./modal_icon.png"
   }
 }

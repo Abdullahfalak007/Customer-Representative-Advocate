@@ -4,7 +4,7 @@ import Side from "../components/Side";
 import Footer from "../components/Footer";
 import InputField from "../components/InputField";
 
-const Signup = () => {
+const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -17,23 +17,9 @@ const Signup = () => {
         <Side />
         <div className="flex flex-col justify-center items-center w-full md:w-[45%] px-2 md:px-8 lg:px-16">
           <h2 className="text-[1.5rem] font-bold mb-4 text-[#0771EF] font-inter text-center w-full">
-            Sign Up To Continue
+            Welcome Back, Login To Continue
           </h2>
           <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-            <InputField
-              label="Name"
-              type="text"
-              id="name"
-              placeholder="Name"
-              required
-            />
-            <InputField
-              label="Company"
-              type="text"
-              id="company"
-              placeholder="Company"
-              required
-            />
             <InputField
               label="Email"
               type="email"
@@ -45,7 +31,7 @@ const Signup = () => {
               label="Password"
               type={showPassword ? "text" : "password"}
               id="password"
-              placeholder="Password (at least 8 characters)"
+              placeholder="Password"
               required
               children={
                 <img
@@ -78,12 +64,12 @@ const Signup = () => {
               type="submit"
               className="w-[32.8125rem] h-[3.8125rem] rounded-[1.25rem] bg-gradient-to-r from-[#0964F8] to-[#02B4FE] shadow-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              Sign Up
+              Sign In
             </button>
           </form>
           <div className="flex justify-center mt-4">
-            <a href="/login" className="text-blue-500 hover:underline">
-              Already have an account? Login
+            <a href="/signup" className="text-blue-500 hover:underline">
+              Don't have an account? Sign Up
             </a>
           </div>
         </div>
@@ -93,4 +79,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;

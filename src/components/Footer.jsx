@@ -42,9 +42,9 @@ const Footer = () => {
                   className="h-5 w-5 mr-2"
                 />
                 <address className="not-italic text-white text-[0.75rem] font-montserrat font-normal leading-normal hover:text-gray-400">
-                  1234 Example St, Suite 100
+                  Florida Office2875 S Ocean Blvd, Ste.
                   <br />
-                  San Francisco, CA 94101
+                  200 Palm Beach, FL 33480
                 </address>
               </li>
               <li className="flex items-center mb-4">
@@ -57,7 +57,7 @@ const Footer = () => {
                   href="tel:+1234567890"
                   className="text-white text-[0.75rem] font-montserrat font-normal leading-normal hover:text-gray-400"
                 >
-                  +1 (234) 567-890
+                  +1 (800) 561-2713
                 </a>
               </li>
               <li className="flex items-center mb-4 font-normal">
@@ -70,7 +70,7 @@ const Footer = () => {
                   href="mailto:info@example.com"
                   className="text-white text-[0.75rem] font-montserrat font-normal leading-normal hover:text-gray-400"
                 >
-                  info@example.com
+                  info@cybergen.com
                 </a>
               </li>
               <li className="flex space-x-4 mt-4">

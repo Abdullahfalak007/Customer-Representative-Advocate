@@ -25,6 +25,24 @@
       "white": "./virtual_assistant_icon_white.svg"
     }
   },
+  "UserSidebar": {
+    "dashboard": {
+      "black": "./dashboard_icon_black.svg",
+      "white": "./dashboard_icon_white.svg"
+    },
+    "callHistory": {
+      "black": "./call_history_icon_black.svg",
+      "white": "./call_history_icon_white.svg"
+    },
+    "settings": {
+      "black": "./settings_icon_black.png",
+      "white": "./settings_icon_white.svg"
+    },
+    "voiceAssistant": {
+      "black": "./voice_assistant_icon_black.svg",
+      "white": "./voice_assistant_icon_white.svg"
+    }
+  },
   "Navbar": {
     "searchIcon": "./search_icon.svg",
     "addIcon": "./add_icon.svg",
@@ -39,5 +57,10 @@
   },
   "Modal": {
     "icon": "./modal_icon.png"
+  },
+  "Chat": {
+    "clientBackground": "./client_background.png",
+    "aiAssistantBackground": "./ai_assistant_background.png",
+    "sendIcon": "./send_icon.svg"
   }
 }

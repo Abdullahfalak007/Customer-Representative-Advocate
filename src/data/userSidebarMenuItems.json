@@ -1,0 +1,18 @@
+[
+  {
+    "icon": "UserSidebar.dashboard.white",
+    "text": "Dashboard"
+  },
+  {
+    "icon": "UserSidebar.voiceAssistant.white",
+    "text": "Voice Assistant"
+  },
+  {
+    "icon": "UserSidebar.callHistory.white",
+    "text": "Call History"
+  },
+  {
+    "icon": "UserSidebar.settings.white",
+    "text": "Settings"
+  }
+]

@@ -81,7 +81,6 @@
 
 // src/pages/VirtualAssistantsPage.jsx
 import React from "react";
-import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import VirtualAssistants from "../components/VirtualAssistants";
 
@@ -119,7 +118,12 @@ const VirtualAssistantsPage = ({ isPageSelected }) => {
 
   return (
     <div className="flex-1 flex flex-col">
-      <Navbar openAddModal={() => openModal()} />
+      <Navbar
+        title="Virtual Assistants"
+        showAddIcon={true}
+        showSearchBar={true}
+        openAddModal={() => openModal()}
+      />
       <div className="p-4 flex-1 overflow-auto">
         <VirtualAssistants
           openModal={openModal}

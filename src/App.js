@@ -1,22 +1,21 @@
-import React from "react";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
-import OTP from "./pages/OTP";
-import ResetPassword from "./pages/ResetPassword";
-import ForgotPassword from "./pages/ForgotPassword";
+// src/App.jsx
+import React, { useState } from "react";
+import Sidebar from "./components/Sidebar";
 import VirtualAssistantsPage from "./pages/VirtualAssistantsPage";
 
-function App() {
+const App = () => {
+  const [selectedPage, setSelectedPage] = useState("Dashboard");
+
   return (
-    <div className="App">
-      {/* <Signup /> */}
-      {/* <Login /> */}
-      {/* <OTP /> */}
-      {/* <ResetPassword /> */}
-      {/* <ForgotPassword /> */}
-      <VirtualAssistantsPage />
+    <div className="flex h-screen">
+      <Sidebar setSelectedPage={setSelectedPage} />
+      {selectedPage === "Virtual Assistants" && (
+        <VirtualAssistantsPage
+          isPageSelected={selectedPage === "Virtual Assistants"}
+        />
+      )}
     </div>
   );
-}
+};
 
 export default App;

@@ -61,6 +61,8 @@
   "Chat": {
     "clientBackground": "./client_background.png",
     "aiAssistantBackground": "./ai_assistant_background.png",
-    "sendIcon": "./send_icon.svg"
+    "sendIcon": "./send_icon.svg",
+    "startIcon": "./start_icon.svg",
+    "stopIcon": "./stop_icon.svg"
   }
 }

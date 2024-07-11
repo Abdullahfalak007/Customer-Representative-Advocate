@@ -1,4 +1,4 @@
-// export default VoiceAssistantPage;
+// src/pages/VoiceAssistantPage.jsx
 import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import UserSidebar from "../components/UserSidebar";
@@ -7,7 +7,22 @@ import "../index.css"; // Ensure this import is present for custom scrollbar sty
 
 const VoiceAssistantPage = () => {
   const [userInput, setUserInput] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [clientMessages, setClientMessages] = useState([
+    {
+      id: 1,
+      text: "CyberGen is a company that specializes in providing comprehensive IT solutions and advanced technology tailored for businesses. We offer a range of services including Cyber Security Solutions, Software Development, Marketing Services, Managed Services, Professional Services, Strategic Staffing, Technical Training, and Artificial Intelligence.",
+    },
+  ]);
+  const [userMessages, setUserMessages] = useState([
+    {
+      id: 1,
+      text: "CyberGen is a company that specializes in providing comprehensive IT solutions...",
+    },
+  ]);
+  const [aiResponses, setAiResponses] = useState([
+    { id: 1, text: "This is an AI response for the message from CyberGen." },
+  ]);
+  const [inputMessages, setInputMessages] = useState([]);
   const [selectedPage, setSelectedPage] = useState("Voice Assistants");
   const [isStarted, setIsStarted] = useState(false);
   const [isTextSelected, setIsTextSelected] = useState(false);
@@ -49,7 +64,7 @@ const VoiceAssistantPage = () => {
 
   const handleSend = () => {
     if (userInput.trim()) {
-      setMessages((prevMessages) => [
+      setInputMessages((prevMessages) => [
         ...prevMessages,
         { id: prevMessages.length + 1, text: userInput },
       ]);
@@ -115,39 +130,40 @@ const VoiceAssistantPage = () => {
               borderRadius: "0.9375rem",
             }}
           >
-            <div className="relative mb-8">
-              <h3 className="text-customBlue font-poppins text-[1.12625rem] font-semibold leading-normal">
-                Client
-              </h3>
-              <div className="relative">
-                <p className="mt-2 p-8 bg-white rounded-lg shadow text-[#333232] font-poppins text-[0.9375rem] font-normal">
-                  CyberGen is a company that specializes in providing
-                  comprehensive IT solutions and advanced technology tailored
-                  for businesses. We offer a range of services including Cyber
-                  Security Solutions, Software Development, Marketing Services,
-                  Managed Services, Professional Services, Strategic Staffing,
-                  Technical Training, and Artificial Intelligence.
-                </p>
-                {isTextSelected && (
-                  <div className="absolute bottom-[-0.8125rem] left-1/2 transform -translate-x-1/2">
-                    <button className="bg-[#E3EDFF] text-customBlue rounded-full w-[5rem] h-[1.625rem] text-[#0771EF] font-poppins text-[0.68456rem] font-normal">
-                      Ask AI
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
-            <div className="relative mb-8 flex justify-end items-center">
-              <div className="text-right mr-4">
+            {clientMessages.map((message) => (
+              <div key={message.id} className="relative mb-8">
                 <h3 className="text-customBlue font-poppins text-[1.12625rem] font-semibold leading-normal">
-                  User Name
+                  Client
                 </h3>
-                <p className="mt-2 p-4 bg-white rounded-lg shadow text-[#333232] font-poppins text-[0.9375rem] font-normal">
-                  CyberGen is a company that specializes in providing
-                  comprehensive IT solutions...
-                </p>
+                <div className="relative">
+                  <p className="mt-2 p-8 bg-white rounded-lg shadow text-[#333232] font-poppins text-[0.9375rem] font-normal">
+                    {message.text}
+                  </p>
+                  {isTextSelected && (
+                    <div className="absolute bottom-[-0.8125rem] left-1/2 transform -translate-x-1/2">
+                      <button className="bg-[#E3EDFF] text-customBlue rounded-full w-[5rem] h-[1.625rem] text-[#0771EF] font-poppins text-[0.68456rem] font-normal">
+                        Ask AI
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
+            ))}
+            {userMessages.map((message) => (
+              <div
+                key={message.id}
+                className="relative mb-8 flex justify-end items-center"
+              >
+                <div className="text-right mr-4">
+                  <h3 className="text-customBlue font-poppins text-[1.12625rem] font-semibold leading-normal">
+                    User Name
+                  </h3>
+                  <p className="mt-2 p-4 bg-white rounded-lg shadow text-[#333232] font-poppins text-[0.9375rem] font-normal">
+                    {message.text}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
           <h3 className="text-customBlue font-poppins text-[1.12625rem] font-semibold leading-normal mt-2 ml-8">
             AI Assistant
@@ -164,15 +180,14 @@ const VoiceAssistantPage = () => {
             }}
           >
             <div className="relative">
-              <p className="text-[#333232] font-poppins text-base p-2 text-[0.937rem] ">
-                CyberGen is a company that specializes in providing
-                comprehensive IT solutions and advanced technology tailored for
-                businesses. We offer a range of services including Cyber
-                Security Solutions, Software Development, Marketing Services,
-                Managed Services, Professional Services, Strategic Staffing,
-                Technical Training, and Artificial Intelligence.
-              </p>
-              {messages.map((message) => (
+              {aiResponses.map((response) => (
+                <div key={response.id} className="flex justify-start mt-2">
+                  <p className="text-[#333232] font-poppins text-base p-2 text-[0.937rem]">
+                    {response.text}
+                  </p>
+                </div>
+              ))}
+              {inputMessages.map((message) => (
                 <div key={message.id} className="flex justify-end mt-2">
                   <p className="text-[#333232] font-poppins text-base p-4 bg-white rounded-lg shadow">
                     {message.text}

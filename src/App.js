@@ -27,11 +27,13 @@
 import React from "react";
 
 import VoiceAssistantPage from "./pages/VoiceAssistantPage";
+import VirtualAssistantsPage from "./pages/VirtualAssistantsPage";
 
 const App = () => {
   return (
     <div className="flex h-screen">
       <VoiceAssistantPage />
+      {/* <VirtualAssistantsPage /> */}
     </div>
   );
 };

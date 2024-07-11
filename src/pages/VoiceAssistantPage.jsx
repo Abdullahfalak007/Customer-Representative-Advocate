@@ -195,18 +195,18 @@ const VoiceAssistantPage = () => {
                 </div>
               ))}
             </div>
-            <div className="relative mt-8">
-              <div className="relative mt-4 flex items-center">
+            <div className="relative mt-4">
+              <div className="relative flex items-center">
                 <input
                   type="text"
                   placeholder="Type your message..."
                   value={userInput}
                   onChange={handleInputChange}
                   onKeyPress={handleKeyPress}
-                  className="w-[53.5rem] h-[3.9375rem] flex-shrink-0 rounded-full bg-white p-4 shadow mr-4 text-[#333232] font-poppins text-[0.9375rem] font-normal"
+                  className="w-[53.5rem] h-[3.9375rem] flex-shrink-0 rounded-full bg-white p-4 mt-20 shadow mr-4 text-[#333232] font-poppins text-[0.9375rem] font-normal"
                 />
                 <button
-                  className="bg-blue-500 text-white rounded-full p-4"
+                  className="bg-blue-500 text-white rounded-full p-4 mt-20"
                   onClick={handleSend}
                 >
                   <img

@@ -1,7 +1,7 @@
 {
   "Signup": {
     "sidebarBackground": "./sidebar_background.png",
-    "logo": "./logo.svg",
+    "logo": "./logo.png",
     "robotIcon": "./robot_interacting_with_computer.svg",
     "checkmark": "./radial_checkmark.svg",
     "eyeIcon": "./eye_icon.svg"

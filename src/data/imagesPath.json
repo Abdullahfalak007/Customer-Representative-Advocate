@@ -70,7 +70,13 @@
     "totalVAIcon": "./assign_va_icon.svg",
     "totalBotsIcon": "./total_bots_icon.svg",
     "totalAssistantsIcon": "./total_assistants_icon.svg",
-    "assignVAIcon": "./assign_va_icon.svg"
+    "assignVAIcon": "./assign_va_icon.svg",
+    "avatar1": "./avatar1.png",
+    "avatar2": "./avatar2.png",
+    "avatar3": "./avatar3.png",
+    "avatar4": "./avatar4.png",
+    "avatar5": "./avatar5.png",
+    "avatar6": "./avatar6.png"
   },
   "Navbar": {
     "searchIcon": "./search_icon.svg",

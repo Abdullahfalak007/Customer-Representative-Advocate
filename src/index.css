@@ -92,6 +92,10 @@ html,
   font-family: "poppins", sans-serif;
 }
 
+.bar:hover {
+  fill: #8884d8; /* The color you want to apply on hover */
+}
+
 /* src/fonts.css */
 
 @font-face {

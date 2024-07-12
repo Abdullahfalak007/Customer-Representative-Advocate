@@ -21,6 +21,9 @@
 //   { name: "Lucy", calls: 220, avatar: imagesPath.AdminDashboardPage.avatar4 },
 //   { name: "Mike", calls: 160, avatar: imagesPath.AdminDashboardPage.avatar5 },
 //   { name: "Emma", calls: 190, avatar: imagesPath.AdminDashboardPage.avatar6 },
+//   { name: "Lucy", calls: 220, avatar: imagesPath.AdminDashboardPage.avatar4 },
+//   { name: "Mike", calls: 160, avatar: imagesPath.AdminDashboardPage.avatar5 },
+//   { name: "Emma", calls: 190, avatar: imagesPath.AdminDashboardPage.avatar6 },
 // ];
 
 // const CustomXAxisTick = ({ x, y, payload }) => {
@@ -30,7 +33,7 @@
 //       <image
 //         href={avatar}
 //         x={-12}
-//         y={0}
+//         y={-3}
 //         width={24}
 //         height={24}
 //         style={{ borderRadius: "50%" }}
@@ -119,17 +122,16 @@
 //               </h3>
 //             </div>
 //           </div>
-//           <div className="bg-white rounded shadow p-4 mb-4">
-//             <h3 className="text-customBlue font-poppins text-lg font-medium mb-4">
+//           <div
+//             className="bg-white rounded shadow p-4 pt-10 mb-4"
+//             style={{ backgroundColor: "#EDF5FF", borderRadius: "10px" }}
+//           >
+//             <h3 className="text-[#6C6A6A] font-poppins text-[0.85725rem] font-medium mb-4 ml-12">
 //               Number of Calls
 //             </h3>
-//             <ResponsiveContainer
-//               width="100%"
-//               height={350}
-//               style={{ backgroundColor: "#EDF5FF", borderRadius: "10px" }}
-//             >
+//             <ResponsiveContainer width="100%" height={350}>
 //               <BarChart data={data} margin={{ top: 20 }}>
-//                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
+//                 <CartesianGrid stroke="#D9D9D9" vertical={false} />
 //                 <XAxis dataKey="name" tick={<CustomXAxisTick />} />
 //                 <YAxis />
 //                 <Tooltip />
@@ -176,55 +178,9 @@
 import React, { useState } from "react";
 import AdminSidebar from "../components/AdminSidebar";
 import Navbar from "../components/Navbar";
+import NumberOfCallsChart from "../components/NumberOfCallsChart";
+import TotalBotsChart from "../components/TotalBotsChart";
 import imagesPath from "../data/imagesPath.json";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  LabelList,
-} from "recharts";
-
-// Sample data for the chart
-const data = [
-  { name: "John", calls: 200, avatar: imagesPath.AdminDashboardPage.avatar1 },
-  { name: "Jane", calls: 150, avatar: imagesPath.AdminDashboardPage.avatar2 },
-  { name: "Tom", calls: 180, avatar: imagesPath.AdminDashboardPage.avatar3 },
-  { name: "Lucy", calls: 220, avatar: imagesPath.AdminDashboardPage.avatar4 },
-  { name: "Mike", calls: 160, avatar: imagesPath.AdminDashboardPage.avatar5 },
-  { name: "Emma", calls: 190, avatar: imagesPath.AdminDashboardPage.avatar6 },
-];
-
-const CustomXAxisTick = ({ x, y, payload }) => {
-  const avatar = data[payload.index].avatar;
-  return (
-    <g transform={`translate(${x},${y})`}>
-      <image
-        href={avatar}
-        x={-12}
-        y={0}
-        width={24}
-        height={24}
-        style={{ borderRadius: "50%" }}
-      />
-    </g>
-  );
-};
-
-const CustomLabel = ({ x, y }) => {
-  return (
-    <image
-      xlinkHref="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOSIgaGVpZ2h0PSIxOSIgdmlld0JveD0iMCAwIDE5IDE5IiBmaWxsPSJub25lIj4KPGNpcmNsZSBjeD0iOS4zODgwNiIgY3k9IjkuNzk5MTkiIHI9IjguMDM0MjYiIGZpbGw9IiMwMEI3RkUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMi4yOTU1Ii8+Cjwvc3ZnPgo="
-      x={x - 3} // Center the SVG horizontally
-      y={y - 20} // Position the SVG above the bar
-      width={19}
-      height={19}
-    />
-  );
-};
 
 const AdminDashboardPage = () => {
   const [selectedPage, setSelectedPage] = useState("Dashboard");
@@ -294,43 +250,9 @@ const AdminDashboardPage = () => {
               </h3>
             </div>
           </div>
-          <div
-            className="bg-white rounded shadow p-4 pt-10 mb-4"
-            style={{ backgroundColor: "#EDF5FF", borderRadius: "10px" }}
-          >
-            <h3 className="text-[#6C6A6A] font-poppins text-[0.85725rem] font-medium mb-4 ml-12">
-              Number of Calls
-            </h3>
-            <ResponsiveContainer width="100%" height={350}>
-              <BarChart data={data} margin={{ top: 20 }}>
-                <CartesianGrid stroke="#D9D9D9" vertical={false} />
-                <XAxis dataKey="name" tick={<CustomXAxisTick />} />
-                <YAxis />
-                <Tooltip />
-                <Bar
-                  dataKey="calls"
-                  fill="url(#colorUv)"
-                  barSize={12} // width of the bar in pixels
-                >
-                  <LabelList dataKey="calls" content={CustomLabel} />
-                </Bar>
-                <defs>
-                  <linearGradient id="colorUv" x1="0" y1="1" x2="0" y2="0">
-                    <stop offset="0%" stopColor="#00B7FE" stopOpacity={1} />
-                    <stop offset="100%" stopColor="#5823FF" stopOpacity={1} />
-                  </linearGradient>
-                </defs>
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
+          <NumberOfCallsChart />
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-white rounded shadow p-4">
-              <h3 className="text-customBlue font-poppins text-lg font-medium mb-4">
-                Total Bots
-              </h3>
-              {/* Placeholder for chart */}
-              <div className="h-64">Chart here</div>
-            </div>
+            <TotalBotsChart />
             <div className="bg-white rounded shadow p-4">
               <h3 className="text-customBlue font-poppins text-lg font-medium mb-4">
                 Total Clients

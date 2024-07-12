@@ -64,5 +64,8 @@
     "sendIcon": "./send_icon.svg",
     "startIcon": "./start_icon.svg",
     "stopIcon": "./stop_icon.svg"
+  },
+  "CallHistory": {
+    "savedFileIcon": "./saved_file_icon.png"
   }
 }

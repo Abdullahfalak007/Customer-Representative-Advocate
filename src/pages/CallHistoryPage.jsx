@@ -1,0 +1,69 @@
+import React, { useState } from "react";
+import Navbar from "../components/Navbar";
+import UserSidebar from "../components/UserSidebar";
+import imagesPath from "../data/imagesPath.json";
+import "../index.css"; // Ensure this import is present for custom scrollbar styles
+
+const CallHistoryPage = () => {
+  const [selectedPage, setSelectedPage] = useState("Call History");
+
+  return (
+    <div className="flex min-h-screen">
+      <UserSidebar setSelectedPage={setSelectedPage} className="h-full" />
+      <div className="flex-1 flex flex-col">
+        <Navbar
+          title="Call History"
+          showAddIcon={false}
+          showSearchBar={true}
+          showSecondSearchBar={true} // This will enable the second search bar
+          searchBarPlaceholder="Client Name"
+          secondSearchBarPlaceholder="File Name"
+        />
+        <div className="flex-1 p-4 overflow-auto">
+          <div className="flex flex-wrap -mx-2">
+            {Array.from({ length: 20 }).map((_, index) => (
+              <div
+                key={index}
+                className="bg-[#eef2f5] rounded-[1.27688rem] shadow p-2 m-2 flex items-center space-x-4 w-[14.89719rem] h-[7.21438rem] relative"
+              >
+                <div
+                  className="absolute bg-customBlue text-white text-[0.5195rem] font-poppins font-medium rounded-r-[1.27688rem] py-1 px-1"
+                  style={{
+                    width: "5.36288rem",
+                    height: "1.21306rem",
+                    left: "-0.05rem",
+                    top: "1.2rem",
+                  }}
+                >
+                  Date: 24/07/2024
+                </div>
+                <div className="flex-shrink-0 mt-6">
+                  <div className="w-16 h-16 ml-[-0.7rem] flex items-center justify-center">
+                    <img
+                      src={imagesPath.CallHistory.savedFileIcon}
+                      alt="Saved File Icon"
+                      className="w-[3.19219rem] h-[3.19219rem]"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col ml-2 mt-6">
+                  <div className="text-customBlue text-[0.76481rem] font-poppins font-medium">
+                    File Name: <span className="text-[#595959]">New Call</span>
+                  </div>
+                  <div className="text-customBlue text-[0.76481rem] font-poppins font-medium">
+                    Client: <span className="text-[#595959]">ZPL</span>
+                  </div>
+                  <div className="text-customBlue text-[0.76481rem] font-poppins font-medium">
+                    Time: <span className="text-[#595959]">12:29 PM</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CallHistoryPage;

@@ -29,13 +29,14 @@ import React from "react";
 import VoiceAssistantPage from "./pages/VoiceAssistantPage";
 import VirtualAssistantsPage from "./pages/VirtualAssistantsPage";
 import CallHistoryPage from "./pages/CallHistoryPage";
-
+import AdminDashboardPage from "./pages/AdminDashboardPage";
 const App = () => {
   return (
     <div className="flex h-screen">
       {/* <VoiceAssistantPage /> */}
-      <VirtualAssistantsPage />
+      {/* <VirtualAssistantsPage /> */}
       {/* <CallHistoryPage /> */}
+      <AdminDashboardPage />
     </div>
   );
 };

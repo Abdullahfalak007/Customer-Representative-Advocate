@@ -43,6 +43,35 @@
       "white": "./voice_assistant_icon_white.svg"
     }
   },
+  "AdminSidebar": {
+    "dashboard": {
+      "white": "./dashboard_icon_white.svg",
+      "black": "./dashboard_icon_black.svg"
+    },
+    "clients": {
+      "white": "./clients_icon_white.svg",
+      "black": "./clients_icon_black.svg"
+    },
+    "virtualAssistant": {
+      "white": "./virtual_assistant_icon_white.svg",
+      "black": "./virtual_assistant_icon_black.svg"
+    },
+    "knowledgeBase": {
+      "white": "./knowledgebase_icon_white.svg",
+      "black": "./knowledgebase_icon_black.svg"
+    },
+    "settings": {
+      "white": "./settings_icon_white.svg",
+      "black": "./settings_icon_black.png"
+    }
+  },
+  "AdminDashboardPage": {
+    "totalClientsIcon": "./total_clients_icon.svg",
+    "totalVAIcon": "./assign_va_icon.svg",
+    "totalBotsIcon": "./total_bots_icon.svg",
+    "totalAssistantsIcon": "./total_assistants_icon.svg",
+    "assignVAIcon": "./assign_va_icon.svg"
+  },
   "Navbar": {
     "searchIcon": "./search_icon.svg",
     "addIcon": "./add_icon.svg",

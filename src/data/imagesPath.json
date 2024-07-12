@@ -56,7 +56,8 @@
     "recycleBinIcon": "./recycle_bin_icon.svg"
   },
   "Modal": {
-    "icon": "./modal_icon.png"
+    "uploadIcon": "./upload_icon.svg",
+    "uploadIconBg": "upload_icon_bg.png"
   },
   "Chat": {
     "clientBackground": "./client_background.png",

@@ -1,5 +1,4 @@
-// src/components/Modal.jsx
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import imagesPath from "../data/imagesPath.json";
 import FormField from "./FormField";
 import "../index.css";
@@ -13,6 +12,7 @@ const Modal = ({
   isEditMode,
 }) => {
   const modalRef = useRef(null);
+  const [uploadedImage, setUploadedImage] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +22,17 @@ const Modal = ({
   const handleClickOutside = (event) => {
     if (modalRef.current && !modalRef.current.contains(event.target)) {
       onClose();
+    }
+  };
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setUploadedImage(reader.result);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -41,14 +52,40 @@ const Modal = ({
         className="relative bg-white flex-shrink-0 w-[34.625rem] h-[36.375rem] rounded-[1.81856rem]"
       >
         <div className="bg-customBlue rounded-t-lg flex items-center justify-center relative h-[5.20994rem] rounded-t-[1.81856rem]">
-          <img
-            src={imagesPath.Modal.icon}
-            alt="Icon"
-            className="absolute w-[11rem] h-[10.07588rem] top-10"
+          {!uploadedImage ? (
+            <>
+              <img
+                src={imagesPath.Modal.uploadIconBg}
+                alt="Background"
+                className="absolute w-[11rem] h-[10.07588rem] top-10 cursor-pointer"
+                onClick={() => document.getElementById("imageUpload").click()}
+              />
+              <img
+                src={imagesPath.Modal.uploadIcon}
+                alt="Icon"
+                className="absolute w-[1.73613rem] h-[1.5625rem] top-[6rem]"
+              />
+              <span className="absolute font-poppinsMedium text-[0.71231rem] font-semibold top-[8rem] ">
+                Upload Profile
+              </span>
+            </>
+          ) : (
+            <img
+              src={uploadedImage}
+              alt="Uploaded"
+              className="absolute w-[11rem] h-[10.07588rem] top-10 rounded-full"
+            />
+          )}
+          <input
+            id="imageUpload"
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={handleImageUpload}
           />
         </div>
         <div className="text-center mt-32">
-          <h2 className="text-[1.22875rem] font-medium text-black font-poppins">
+          <h2 className="text-[1.22875rem] font-medium text-black font-poppinsMedium">
             {isEditMode
               ? "Edit Virtual Assistant"
               : "Add New Virtual Assistant"}

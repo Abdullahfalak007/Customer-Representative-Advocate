@@ -34,8 +34,8 @@ const App = () => {
   return (
     <div className="flex h-screen">
       {/* <VoiceAssistantPage /> */}
-      {/* <VirtualAssistantsPage /> */}
-      <CallHistoryPage />
+      <VirtualAssistantsPage />
+      {/* <CallHistoryPage /> */}
     </div>
   );
 };

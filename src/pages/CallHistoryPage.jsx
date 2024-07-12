@@ -2,26 +2,29 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import UserSidebar from "../components/UserSidebar";
 import imagesPath from "../data/imagesPath.json";
+import fileData from "../data/fileData.json"; // Importing JSON data
 import "../index.css"; // Ensure this import is present for custom scrollbar styles
 
 const CallHistoryPage = () => {
   const [selectedPage, setSelectedPage] = useState("Call History");
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen w-full">
       <UserSidebar setSelectedPage={setSelectedPage} className="h-full" />
       <div className="flex-1 flex flex-col">
-        <Navbar
-          title="Call History"
-          showAddIcon={false}
-          showSearchBar={true}
-          showSecondSearchBar={true} // This will enable the second search bar
-          searchBarPlaceholder="Client Name"
-          secondSearchBarPlaceholder="File Name"
-        />
+        <div className="w-full">
+          <Navbar
+            title="Call History"
+            showAddIcon={false}
+            showSearchBar={true}
+            showSecondSearchBar={true} // This will enable the second search bar
+            searchBarPlaceholder="Client Name"
+            secondSearchBarPlaceholder="File Name"
+          />
+        </div>
         <div className="flex-1 p-4 overflow-auto">
           <div className="flex flex-wrap -mx-2">
-            {Array.from({ length: 20 }).map((_, index) => (
+            {fileData.map((file, index) => (
               <div
                 key={index}
                 className="bg-[#eef2f5] rounded-[1.27688rem] shadow p-2 m-2 flex items-center space-x-4 w-[14.89719rem] h-[7.21438rem] relative"
@@ -35,7 +38,7 @@ const CallHistoryPage = () => {
                     top: "1.2rem",
                   }}
                 >
-                  Date: 24/07/2024
+                  Date: {file.date}
                 </div>
                 <div className="flex-shrink-0 mt-6">
                   <div className="w-16 h-16 ml-[-0.7rem] flex items-center justify-center">
@@ -48,13 +51,15 @@ const CallHistoryPage = () => {
                 </div>
                 <div className="flex flex-col ml-2 mt-6">
                   <div className="text-customBlue text-[0.76481rem] font-poppins font-medium">
-                    File Name: <span className="text-[#595959]">New Call</span>
+                    File Name:{" "}
+                    <span className="text-[#595959]">{file.fileName}</span>
                   </div>
                   <div className="text-customBlue text-[0.76481rem] font-poppins font-medium">
-                    Client: <span className="text-[#595959]">ZPL</span>
+                    Client:{" "}
+                    <span className="text-[#595959]">{file.client}</span>
                   </div>
                   <div className="text-customBlue text-[0.76481rem] font-poppins font-medium">
-                    Time: <span className="text-[#595959]">12:29 PM</span>
+                    Time: <span className="text-[#595959]">{file.time}</span>
                   </div>
                 </div>
               </div>

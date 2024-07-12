@@ -25,7 +25,7 @@
 //   const [inputMessages, setInputMessages] = useState([]);
 //   const [selectedPage, setSelectedPage] = useState("Voice Assistants");
 //   const [isStarted, setIsStarted] = useState(false);
-//   const [isTextSelected, setIsTextSelected] = useState(false);
+//   const [selectedTextContainer, setSelectedTextContainer] = useState(null);
 //   const sidebarRef = useRef(null);
 
 //   useEffect(() => {
@@ -45,14 +45,19 @@
 //     };
 //   }, []);
 
+//   const handleSelectionChange = () => {
+//     const selection = window.getSelection();
+//     if (selection && selection.toString().length > 0) {
+//       const container =
+//         selection.anchorNode.parentNode.closest(".message-container");
+//       setSelectedTextContainer(container);
+//     } else {
+//       setSelectedTextContainer(null);
+//     }
+//   };
+
 //   useEffect(() => {
-//     const handleSelectionChange = () => {
-//       const selection = window.getSelection();
-//       setIsTextSelected(selection && selection.toString().length > 0);
-//     };
-
 //     document.addEventListener("selectionchange", handleSelectionChange);
-
 //     return () => {
 //       document.removeEventListener("selectionchange", handleSelectionChange);
 //     };
@@ -131,7 +136,11 @@
 //             }}
 //           >
 //             {clientMessages.map((message) => (
-//               <div key={message.id} className="relative mb-8">
+//               <div
+//                 key={message.id}
+//                 className="relative mb-8 message-container"
+//                 data-id={message.id}
+//               >
 //                 <h3 className="text-customBlue font-poppins text-[1.12625rem] font-semibold leading-normal">
 //                   Client
 //                 </h3>
@@ -139,20 +148,22 @@
 //                   <p className="mt-2 p-8 bg-white rounded-lg shadow text-[#333232] font-poppins text-[0.9375rem] font-normal">
 //                     {message.text}
 //                   </p>
-//                   {isTextSelected && (
-//                     <div className="absolute bottom-[-0.8125rem] left-1/2 transform -translate-x-1/2">
-//                       <button className="bg-[#E3EDFF] text-customBlue rounded-full w-[5rem] h-[1.625rem] text-[#0771EF] font-poppins text-[0.68456rem] font-normal">
-//                         Ask AI
-//                       </button>
-//                     </div>
-//                   )}
+//                   {selectedTextContainer &&
+//                     selectedTextContainer.dataset.id ===
+//                       message.id.toString() && (
+//                       <div className="absolute bottom-[-0.8125rem] left-1/2 transform -translate-x-1/2">
+//                         <button className="bg-[#E3EDFF] text-customBlue rounded-full w-[5rem] h-[1.625rem] text-[#0771EF] font-poppins text-[0.68456rem] font-normal">
+//                           Ask AI
+//                         </button>
+//                       </div>
+//                     )}
 //                 </div>
 //               </div>
 //             ))}
 //             {userMessages.map((message) => (
 //               <div
 //                 key={message.id}
-//                 className="relative mb-8 flex justify-end items-center"
+//                 className="relative mb-8 flex justify-end items-center message-container"
 //               >
 //                 <div className="text-right mr-4">
 //                   <h3 className="text-customBlue font-poppins text-[1.12625rem] font-semibold leading-normal">
@@ -230,6 +241,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import UserSidebar from "../components/UserSidebar";
+import FileNameModal from "../components/FileNameModal"; // Make sure to create this component
 import imagesPath from "../data/imagesPath.json";
 import "../index.css"; // Ensure this import is present for custom scrollbar styles
 
@@ -253,7 +265,8 @@ const VoiceAssistantPage = () => {
   const [inputMessages, setInputMessages] = useState([]);
   const [selectedPage, setSelectedPage] = useState("Voice Assistants");
   const [isStarted, setIsStarted] = useState(false);
-  const [selectedTextContainer, setSelectedTextContainer] = useState(null);
+  const [isTextSelected, setIsTextSelected] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const sidebarRef = useRef(null);
 
   useEffect(() => {
@@ -273,19 +286,14 @@ const VoiceAssistantPage = () => {
     };
   }, []);
 
-  const handleSelectionChange = () => {
-    const selection = window.getSelection();
-    if (selection && selection.toString().length > 0) {
-      const container =
-        selection.anchorNode.parentNode.closest(".message-container");
-      setSelectedTextContainer(container);
-    } else {
-      setSelectedTextContainer(null);
-    }
-  };
-
   useEffect(() => {
+    const handleSelectionChange = () => {
+      const selection = window.getSelection();
+      setIsTextSelected(selection && selection.toString().length > 0);
+    };
+
     document.addEventListener("selectionchange", handleSelectionChange);
+
     return () => {
       document.removeEventListener("selectionchange", handleSelectionChange);
     };
@@ -313,7 +321,19 @@ const VoiceAssistantPage = () => {
   };
 
   const handleStartStop = () => {
+    if (isStarted) {
+      setIsModalOpen(true); // Open the modal when stopping
+    }
     setIsStarted(!isStarted);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleSaveFileName = (fileName) => {
+    console.log("File name saved:", fileName);
+    setIsModalOpen(false);
   };
 
   return (
@@ -364,11 +384,7 @@ const VoiceAssistantPage = () => {
             }}
           >
             {clientMessages.map((message) => (
-              <div
-                key={message.id}
-                className="relative mb-8 message-container"
-                data-id={message.id}
-              >
+              <div key={message.id} className="relative mb-8">
                 <h3 className="text-customBlue font-poppins text-[1.12625rem] font-semibold leading-normal">
                   Client
                 </h3>
@@ -376,22 +392,20 @@ const VoiceAssistantPage = () => {
                   <p className="mt-2 p-8 bg-white rounded-lg shadow text-[#333232] font-poppins text-[0.9375rem] font-normal">
                     {message.text}
                   </p>
-                  {selectedTextContainer &&
-                    selectedTextContainer.dataset.id ===
-                      message.id.toString() && (
-                      <div className="absolute bottom-[-0.8125rem] left-1/2 transform -translate-x-1/2">
-                        <button className="bg-[#E3EDFF] text-customBlue rounded-full w-[5rem] h-[1.625rem] text-[#0771EF] font-poppins text-[0.68456rem] font-normal">
-                          Ask AI
-                        </button>
-                      </div>
-                    )}
+                  {isTextSelected && (
+                    <div className="absolute bottom-[-0.8125rem] left-1/2 transform -translate-x-1/2">
+                      <button className="bg-[#E3EDFF] text-customBlue rounded-full w-[5rem] h-[1.625rem] text-[#0771EF] font-poppins text-[0.68456rem] font-normal">
+                        Ask AI
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
             {userMessages.map((message) => (
               <div
                 key={message.id}
-                className="relative mb-8 flex justify-end items-center message-container"
+                className="relative mb-8 flex justify-end items-center"
               >
                 <div className="text-right mr-4">
                   <h3 className="text-customBlue font-poppins text-[1.12625rem] font-semibold leading-normal">
@@ -459,6 +473,9 @@ const VoiceAssistantPage = () => {
           </div>
         </div>
       </div>
+      {isModalOpen && (
+        <FileNameModal onClose={handleCloseModal} onSave={handleSaveFileName} />
+      )}
     </div>
   );
 };

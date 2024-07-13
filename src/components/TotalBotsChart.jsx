@@ -69,8 +69,8 @@ const TotalBotsChart = () => {
             >
               <defs>
                 <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#00B7FE" stopOpacity={1} />
-                  <stop offset="100%" stopColor="#5823FF" stopOpacity={1} />
+                  <stop offset="0%" stopColor="#5823FF" stopOpacity={1} />
+                  <stop offset="100%" stopColor="#00B7FE" stopOpacity={1} />
                 </linearGradient>
               </defs>
               <CartesianGrid stroke="#D9D9D9" vertical={false} />

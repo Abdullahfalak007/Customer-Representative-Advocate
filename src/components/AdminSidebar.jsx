@@ -1,9 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import adminSidebarMenuItems from "../data/adminSidebarMenuItems.json";
 import imagesPath from "../data/imagesPath.json";
 
 const AdminSidebar = ({ setSelectedPage }) => {
   const [selectedItem, setSelectedItem] = useState(null);
+  const sidebarRef = useRef(null);
+
+  useEffect(() => {
+    const updateSidebarHeight = () => {
+      if (sidebarRef.current) {
+        sidebarRef.current.style.height = `${document.documentElement.scrollHeight}px`;
+      }
+    };
+
+    updateSidebarHeight();
+    window.addEventListener("resize", updateSidebarHeight);
+    window.addEventListener("scroll", updateSidebarHeight);
+
+    return () => {
+      window.removeEventListener("resize", updateSidebarHeight);
+      window.removeEventListener("scroll", updateSidebarHeight);
+    };
+  }, []);
 
   const getIconPath = (iconPath, isSelected) => {
     const iconType = isSelected ? "black" : "white";
@@ -19,7 +37,10 @@ const AdminSidebar = ({ setSelectedPage }) => {
   };
 
   return (
-    <div className="h-full w-[19.375rem] bg-customBlue text-white py-4">
+    <div
+      className="h-full w-[19.375rem] bg-customBlue text-white py-4"
+      ref={sidebarRef}
+    >
       <img
         src={imagesPath.Signup.logo}
         alt="Logo"

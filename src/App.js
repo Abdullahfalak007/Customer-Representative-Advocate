@@ -42,8 +42,8 @@ const App = () => {
       {/* <CallHistoryPage /> */}
       {/* <AdminDashboardPage /> */}
       {/* <ClientsPageForAdmin /> */}
-      <VirtualAssistantPageForAdmin />
-      {/* <KnowledgeBasePageForAdmin /> */}
+      {/* <VirtualAssistantPageForAdmin /> */}
+      <KnowledgeBasePageForAdmin />
     </div>
   );
 };

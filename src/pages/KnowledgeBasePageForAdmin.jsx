@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import AdminSidebar from "../components/AdminSidebar";
 import Navbar from "../components/Navbar";
+import KnowledgeBaseCard from "../components/KnowledgeBaseCard";
+import knowledgeBaseData from "../data/knowledgeBaseData.json"; // Sample data
 
 const KnowledgeBasePageForAdmin = () => {
   const [selectedPage, setSelectedPage] = useState("Knowledge Base");
@@ -11,16 +13,16 @@ const KnowledgeBasePageForAdmin = () => {
       <div className="flex-1 flex flex-col">
         <div className="w-full">
           <Navbar
-            title={<span className="text-customBlue">Knowledge Base</span>}
-            showAddIcon={false}
-            showSearchBar={false}
-            showSecondSearchBar={false}
+            title="Knowledge Base"
+            showAddIcon={true}
+            showSearchBar={true}
+            searchBarPlaceholder="Search Company"
           />
         </div>
-        <div className="flex-1 p-4">
-          {/* Content for the Knowledge Base page */}
-          <h2 className="text-2xl font-bold">Knowledge Base Page Content</h2>
-          <p>Here you can manage the knowledge base.</p>
+        <div className="flex-1 p-4 grid grid-cols-3 gap-4">
+          {knowledgeBaseData.map((item) => (
+            <KnowledgeBaseCard key={item.id} {...item} />
+          ))}
         </div>
       </div>
     </div>

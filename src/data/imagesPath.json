@@ -103,5 +103,10 @@
   },
   "CallHistory": {
     "savedFileIcon": "./saved_file_icon.png"
+  },
+  "KnowledgeBase": {
+    "editIcon": "./edit_icon_knowledge_base.svg",
+    "deleteIcon": "./recycle_bin_icon_knowledge_base.svg",
+    "pdfIcon": "./pdf_icon.svg"
   }
 }

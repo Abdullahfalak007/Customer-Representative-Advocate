@@ -1,28 +1,137 @@
+// import React, { useState } from "react";
+// import AdminSidebar from "../components/AdminSidebar";
+// import Navbar from "../components/Navbar";
+// import VirtualAssistantForAdminComponent from "../components/VirtualAssistantForAdminComponent";
+
+// const VirtualAssistantPageForAdmin = () => {
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+//   const [formData, setFormData] = useState({
+//     id: null,
+//     virtualAssistant: "",
+//     email: "",
+//     number: "",
+//     client: "",
+//     bot: "",
+//   });
+//   const [isEditMode, setIsEditMode] = useState(false);
+
+//   const openModal = (assistant = null) => {
+//     if (assistant) {
+//       setFormData(assistant);
+//       setIsEditMode(true);
+//     } else {
+//       setFormData({
+//         id: null,
+//         virtualAssistant: "",
+//         email: "",
+//         number: "",
+//         client: "",
+//         bot: "",
+//       });
+//       setIsEditMode(false);
+//     }
+//     setIsModalOpen(true);
+//   };
+
+//   const closeModal = () => {
+//     setIsModalOpen(false);
+//   };
+
+//   const saveAssistant = () => {
+//     // Save logic goes here
+//   };
+
+//   return (
+//     <div className="flex min-h-screen w-full">
+//       <AdminSidebar />
+//       <div className="flex-1 flex flex-col">
+//         <Navbar
+//           title="Virtual Assistants"
+//           showAddIcon={true}
+//           showSearchBar={true}
+//           openAddModal={() => openModal()}
+//         />
+//         <div className="p-4 flex-1 overflow-auto">
+//           <VirtualAssistantForAdminComponent
+//             openModal={openModal}
+//             isModalOpen={isModalOpen}
+//             closeModal={closeModal}
+//             saveAssistant={saveAssistant}
+//             formData={formData}
+//             setFormData={setFormData}
+//             isEditMode={isEditMode}
+//           />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default VirtualAssistantPageForAdmin;
+
 import React, { useState } from "react";
 import AdminSidebar from "../components/AdminSidebar";
 import Navbar from "../components/Navbar";
+import VirtualAssistantForAdminComponent from "../components/VirtualAssistantForAdminComponent";
 
 const VirtualAssistantPageForAdmin = () => {
-  const [selectedPage, setSelectedPage] = useState("Virtual Assistants");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    id: null,
+    virtualAssistant: "",
+    email: "",
+    number: "",
+    client: "",
+    bot: "",
+  });
+  const [isEditMode, setIsEditMode] = useState(false);
+
+  const openModal = (assistant = null) => {
+    if (assistant) {
+      setFormData(assistant);
+      setIsEditMode(true);
+    } else {
+      setFormData({
+        id: null,
+        virtualAssistant: "",
+        email: "",
+        number: "",
+        client: "",
+        bot: "",
+      });
+      setIsEditMode(false);
+    }
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const saveAssistant = () => {
+    // Save logic goes here
+  };
 
   return (
     <div className="flex min-h-screen w-full">
-      <AdminSidebar setSelectedPage={setSelectedPage} className="h-full" />
+      <AdminSidebar />
       <div className="flex-1 flex flex-col">
-        <div className="w-full">
-          <Navbar
-            title={<span className="text-customBlue">Virtual Assistants</span>}
-            showAddIcon={false}
-            showSearchBar={false}
-            showSecondSearchBar={false}
+        <Navbar
+          title="Virtual Assistants"
+          showAddIcon={true}
+          showSearchBar={true}
+          openAddModal={() => openModal()}
+        />
+        <div className="p-4 flex-1 overflow-auto">
+          <VirtualAssistantForAdminComponent
+            openModal={openModal}
+            isModalOpen={isModalOpen}
+            closeModal={closeModal}
+            saveAssistant={saveAssistant}
+            formData={formData}
+            setFormData={setFormData}
+            isEditMode={isEditMode}
           />
-        </div>
-        <div className="flex-1 p-4">
-          {/* Content for the Virtual Assistants page */}
-          <h2 className="text-2xl font-bold">
-            Virtual Assistants Page Content
-          </h2>
-          <p>Here you can manage all the virtual assistants.</p>
         </div>
       </div>
     </div>

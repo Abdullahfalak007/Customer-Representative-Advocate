@@ -107,6 +107,8 @@
   "KnowledgeBase": {
     "editIcon": "./edit_icon_knowledge_base.svg",
     "deleteIcon": "./recycle_bin_icon_knowledge_base.svg",
-    "pdfIcon": "./pdf_icon.svg"
+    "pdfIcon": "./pdf_icon.svg",
+    "profile": "./bot_modal_profile_picture.svg",
+    "uploadIcon": "./upload_icon_Knowledgebase.svg"
   }
 }

@@ -5,7 +5,7 @@ import "../index.css";
 const KnowledgeBaseCard = ({ id, client, bot, dateCreated, documents }) => {
   return (
     <div
-      className="bg-lightBlue p-4 rounded-lg shadow-md flex flex-col relative"
+      className="bg-lightBlue p-4 rounded-lg flex flex-col relative"
       style={{
         width: "20.875rem",
         height: "10.75rem",
@@ -149,7 +149,23 @@ const KnowledgeBaseCard = ({ id, client, bot, dateCreated, documents }) => {
           </div>
         ))}
       </div>
-      <button className="bg-blue-500 text-white px-4 py-2 mt-2 rounded-lg">
+      <button
+        className="absolute bottom-2 left-4 text-white flex items-center justify-center"
+        style={{
+          width: "4.1875rem",
+          height: "1.25rem",
+          borderRadius: "0.625rem",
+          background: "#0771EF",
+          color: "#FFF",
+          fontFamily: "Poppins",
+          fontSize: "0.5625rem",
+          fontStyle: "normal",
+          fontWeight: 500,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         Trained
       </button>
     </div>

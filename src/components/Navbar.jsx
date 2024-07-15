@@ -10,10 +10,13 @@
 //   searchBarPlaceholder,
 //   secondSearchBarPlaceholder,
 //   openAddModal,
+//   titleColor = "text-[#595959]", // Default color
 // }) => {
 //   return (
 //     <div className="bg-white p-4 flex justify-between items-center w-full">
-//       <h1 className="mt-6 text-[#595959] font-poppins font-semibold text-[1.523rem]">
+//       <h1
+//         className={`mt-6 font-poppins font-semibold text-[1.523rem] ${titleColor}`}
+//       >
 //         {title}
 //       </h1>
 //       <div className="flex items-center space-x-4 mt-6">
@@ -26,7 +29,7 @@
 //             />
 //             <input
 //               type="text"
-//               placeholder={searchBarPlaceholder || "Search Assistant"}
+//               placeholder={searchBarPlaceholder || "Search"}
 //               className="w-[12.875rem] h-[2.25rem] pl-10 pr-4 py-0 border border-gray-300 rounded-md focus:outline-none bg-customBlue text-white placeholder-custom"
 //               style={{
 //                 height: "2.25rem",
@@ -92,6 +95,8 @@ const Navbar = ({
   secondSearchBarPlaceholder,
   openAddModal,
   titleColor = "text-[#595959]", // Default color
+  showClientDropdown, // Add this prop
+  clients, // Add this prop
 }) => {
   return (
     <div className="bg-white p-4 flex justify-between items-center w-full">
@@ -119,22 +124,15 @@ const Navbar = ({
             />
           </div>
         )}
-        {showSecondSearchBar && (
+        {showClientDropdown && (
           <div className="relative">
-            <img
-              src={imagesPath.Navbar.searchIcon}
-              alt="Search"
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
-            />
-            <input
-              type="text"
-              placeholder={secondSearchBarPlaceholder || "Search"}
-              className="w-[12.875rem] h-[2.25rem] pl-10 pr-4 py-0 border border-gray-300 rounded-md focus:outline-none bg-customBlue text-white placeholder-custom"
-              style={{
-                height: "2.25rem",
-                lineHeight: "2.25rem",
-              }}
-            />
+            <select className="w-[12.875rem] h-[2.25rem] pl-2 pr-4 py-0 border border-gray-300 rounded-md focus:outline-none bg-customBlue text-white">
+              {clients.map((client) => (
+                <option key={client.id} value={client.client}>
+                  {client.client}
+                </option>
+              ))}
+            </select>
           </div>
         )}
         {showAddIcon && (

@@ -109,6 +109,8 @@
     "deleteIcon": "./recycle_bin_icon_knowledge_base.svg",
     "pdfIcon": "./pdf_icon.svg",
     "profile": "./bot_modal_profile_picture.svg",
-    "uploadIcon": "./upload_icon_Knowledgebase.svg"
+    "uploadIcon": "./upload_icon_Knowledgebase.svg",
+    "successIcon": "./success_icon.svg",
+    "erroIcon": "./error_icon.svg"
   }
 }

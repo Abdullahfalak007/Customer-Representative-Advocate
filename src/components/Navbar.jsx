@@ -32,7 +32,7 @@ const Navbar = ({
             <input
               type="text"
               placeholder={searchBarPlaceholder || "Search"}
-              className="w-[12.875rem] h-[2.25rem] pl-10 pr-4 py-0 border border-gray-300 rounded-md focus:outline-none bg-customBlue text-white placeholder-custom text-[0.75rem]"
+              className="w-[12.875rem] h-[2.25rem] pl-10 pr-4 py-0 border border-gray-300 rounded-md focus:outline-none bg-customBlue text-white placeholder-custom font-inter text-[0.75rem] font-normal"
               style={{
                 height: "2.25rem",
                 lineHeight: "2.25rem",

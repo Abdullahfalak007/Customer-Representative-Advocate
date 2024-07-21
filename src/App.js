@@ -7,6 +7,7 @@ import AdminDashboardPage from "./pages/AdminDashboardPage";
 import ClientsPageForAdmin from "./pages/ClientsPageForAdmin";
 import VirtualAssistantPageForAdmin from "./pages/VirtualAssistantPageForAdmin";
 import KnowledgeBasePageForAdmin from "./pages/KnowledgeBasePageForAdmin";
+import Login from "./pages/Login";
 
 const App = () => {
   return (
@@ -17,7 +18,8 @@ const App = () => {
       {/* <AdminDashboardPage /> */}
       {/* <ClientsPageForAdmin /> */}
       {/* <VirtualAssistantPageForAdmin /> */}
-      <KnowledgeBasePageForAdmin />
+      {/* <KnowledgeBasePageForAdmin /> */}
+      <Login />
     </div>
   );
 };

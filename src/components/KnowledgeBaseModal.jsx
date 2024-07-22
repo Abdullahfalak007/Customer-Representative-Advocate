@@ -123,22 +123,13 @@ const KnowledgeBaseModal = ({
           className="w-[34.625rem] h-[22.5625rem] flex-shrink-0 rounded-[1.81856rem] bg-white flex flex-col items-center justify-center"
         >
           <img
-            src={imagesPath.KnowledgeBase.erroIcon}
-            alt="Error"
+            src={imagesPath.KnowledgeBase.successIcon}
+            alt="Success"
             className="w-[5.375rem] h-[5.375rem] mb-2"
           />
           <span className="font-poppinsRegular text-[1.22875rem] font-medium">
-            Error
+            Success
           </span>
-          <button
-            onClick={() => {
-              setIsError(false);
-              onClose();
-            }}
-            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-full"
-          >
-            Retry
-          </button>
         </div>
       ) : (
         <div

@@ -7,13 +7,15 @@
     "eyeIcon": "./eye_icon.svg"
   },
   "Footer": {
-    "locationIcon": "./location_icon.svg",
-    "telephoneIcon": "./telephone_icon.svg",
-    "emailIcon": "./email_icon.svg",
-    "facebookIcon": "./facebook.svg",
-    "linkedInIcon": "./linkedIn.svg",
-    "twitterIcon": "./twitter.svg",
-    "whatsappIcon": "./whatsapp.svg"
+    "house": "/house_icon.svg",
+    "envelope": "/email_icon_footer.svg",
+    "phone": "/phone_icon.svg",
+    "twitter": "/twitter_icon.svg",
+    "facebook": "/facebook_icon.svg",
+    "linkedin": "/linkedin_icon.svg",
+    "instagram": "/instagram_icon.svg",
+    "youtube": "/youtube_icon.svg",
+    "fileContract": "/file_contract_icon.svg"
   },
   "Sidebar": {
     "dashboard": {
